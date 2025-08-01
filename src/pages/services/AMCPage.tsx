@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
+
 const AMCPage = () => {
   const comprehensiveFeatures = [
     'Complete preventive maintenance',
@@ -40,6 +41,7 @@ const AMCPage = () => {
       description: 'Certified professionals with years of experience'
     }
   ];
+
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
@@ -78,14 +80,15 @@ const AMCPage = () => {
             className="flex justify-center"
           >
             <Link to="/contact">
-                          <button className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]">
-                            <span className="relative z-10">Book Site Visit</span>
-                            <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-                          </button>
-             </Link>
+              <button className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]">
+                <span className="relative z-10">Book Site Visit</span>
+                <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>
+
       {/* BENEFITS SECTION */}
       <section className="py-20 bg-[#F2FCF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,6 +123,7 @@ const AMCPage = () => {
           </div>
         </div>
       </section>
+
       {/* AMC TYPES SECTION */}
       <section className="py-20 bg-[#E6FAF4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,11 +168,14 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#1ABC9C] mb-2">Best Value</div>
                 <p className="text-[#0D3B2E] mb-6">Includes all parts and labor</p>
-                <button className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                  Get Quote
-                </button>
+                <Link to="/contact">
+                  <button className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                    Get Quote
+                  </button>
+                </Link>
               </div>
             </motion.div>
+
             {/* Non-Comprehensive AMC */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -195,14 +202,17 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#145943] mb-2">Budget Friendly</div>
                 <p className="text-[#0D3B2E] mb-6">Parts charged separately</p>
-                <button className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                  Get Quote
-                </button>
+                <Link to="/contact">
+                  <button className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                    Get Quote
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
       {/* CTA SECTION */}
       <section className="py-20 bg-gradient-to-r from-[#1ABC9C] to-[#145943] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -234,4 +244,5 @@ const AMCPage = () => {
     </div>
   );
 };
+
 export default AMCPage;
