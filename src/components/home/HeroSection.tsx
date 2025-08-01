@@ -62,7 +62,7 @@ const HeroSection = () => {
       
       {/* Text Content */}
       <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-elegantText' : 'opacity-0'}`}>
-        <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6">
+        <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 royal-glimmer">
           Elevate Your Space with Precision
         </h1>
         <p className="text-base md:text-xl mb-6 md:mb-8 max-w-md md:max-w-2xl mx-auto">
