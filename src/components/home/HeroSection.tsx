@@ -11,14 +11,9 @@ const HeroSection = () => {
   const handleVideoPlay = () => {
     const timer = setTimeout(() => {
       setShowText(true);
-    }, 4000); // Show text after 4 seconds
+    }, 5500); // Show text after 5.5 seconds
     
     return () => clearTimeout(timer);
-  };
-  
-  // Function to handle video reset
-  const handleVideoEnded = () => {
-    setShowText(false);
   };
   
   // Set up IntersectionObserver for lazy loading and autoplay
@@ -57,7 +52,6 @@ const HeroSection = () => {
           alt="Hero Background"
           className="w-full h-full object-cover object-bottom"
           onPlay={handleVideoPlay}
-          onEnded={handleVideoEnded}
           controls={false}
           autoPlay
           loop={false}
@@ -69,23 +63,21 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       
-      {/* Text Content - appears after 4 seconds of video playback */}
-      {showText && (
-        <div className="relative z-10 text-center text-white px-4 animate-fadeIn">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-2xl">
-            Elevate Your Space with Precision
-          </h1>
-          <p className="mt-4 text-lg md:text-xl drop-shadow-lg text-white/90">
-            Premium Lift Solutions Tailored for Modern Needs
-          </p>
-          <button
-            onClick={() => navigate('/products')}
-            className="mt-6 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            Explore Products <ArrowRight size={18} />
-          </button>
-        </div>
-      )}
+      {/* Text Content - appears after 5.5 seconds and remains visible */}
+      <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-fadeIn' : 'opacity-0'}`}>
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-2xl">
+          Elevate Your Space with Precision
+        </h1>
+        <p className="mt-4 text-lg md:text-xl drop-shadow-lg text-white/90">
+          Premium Lift Solutions Tailored for Modern Needs
+        </p>
+        <button
+          onClick={() => navigate('/products')}
+          className="mt-6 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          Explore Products <ArrowRight size={18} />
+        </button>
+      </div>
     </section>
   );
 };
