@@ -7,16 +7,14 @@ const HeroSection = () => {
   const [showText, setShowText] = useState(false);
   const videoRef = useRef(null);
   
-  // Function to handle video play event
   const handleVideoPlay = () => {
     const timer = setTimeout(() => {
       setShowText(true);
-    }, 5500); // Show text after 5.5 seconds
+    }, 5500);
     
     return () => clearTimeout(timer);
   };
   
-  // Set up IntersectionObserver for lazy loading and autoplay
   useEffect(() => {
     const videoElement = videoRef.current;
     
@@ -25,7 +23,6 @@ const HeroSection = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Load and play the video when it comes into view
           videoElement.load();
           videoElement.play().catch(error => {
             console.log("Autoplay prevented:", error);
@@ -43,14 +40,14 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative h-[90vh] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[90vh] overflow-hidden flex items-center justify-center bg-black">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
           ref={videoRef}
           src="/BG.mp4"
           alt="Hero Background"
-          className="w-full h-full object-cover object-center md:object-bottom"
+          className="w-full h-full object-cover object-center md:object-[center_85%]"
           onPlay={handleVideoPlay}
           controls={false}
           autoPlay
@@ -59,11 +56,11 @@ const HeroSection = () => {
           playsInline
           preload="none"
         />
-        {/* Gradient overlay - different for mobile and desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:from-black/70 md:via-black/30 md:to-transparent"></div>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
       </div>
       
-      {/* Text Content - appears after 5.5 seconds with elegant animation */}
+      {/* Text Content */}
       <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-elegantText' : 'opacity-0'}`}>
         <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6">
           Elevate Your Space with Precision
