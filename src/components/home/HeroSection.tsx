@@ -62,7 +62,7 @@ const HeroSection = () => {
       
       {/* Text Content */}
       <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-elegantText' : 'opacity-0'}`}>
-        <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 royal-glimmer">
+        <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 subtle-green-silver">
           Elevate Your Space with Precision
         </h1>
         <p className="text-base md:text-xl mb-6 md:mb-8 max-w-md md:max-w-2xl mx-auto">
@@ -70,7 +70,7 @@ const HeroSection = () => {
         </p>
         <button
           onClick={() => navigate('/products')}
-          className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+          className="inline-flex items-center gap-2 btn-bottle-green"
         >
           Explore Products <ArrowRight size={18} />
         </button>
