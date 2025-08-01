@@ -47,7 +47,7 @@ const HeroSection = () => {
           ref={videoRef}
           src="/BG.mp4"
           alt="Hero Background"
-          className="w-full h-full object-cover object-center md:object-[center_85%]"
+          className="w-full h-full object-cover object-[center_30%] md:object-[center_80%]"
           onPlay={handleVideoPlay}
           controls={false}
           autoPlay
@@ -56,8 +56,8 @@ const HeroSection = () => {
           playsInline
           preload="none"
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+        {/* Enhanced gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
       </div>
       
       {/* Text Content */}
