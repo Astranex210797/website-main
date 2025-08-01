@@ -59,8 +59,8 @@ const HeroSection = () => {
           playsInline
           preload="none"
         />
-        {/* Gradient overlay - adjusted for mobile cropping issue */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent md:from-black/70 md:via-black/30 md:to-transparent"></div>
+        {/* Gradient overlay - different for mobile and desktop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:from-black/70 md:via-black/30 md:to-transparent"></div>
       </div>
       
       {/* Text Content - appears after 5.5 seconds with elegant animation */}
