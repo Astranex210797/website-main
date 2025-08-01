@@ -31,46 +31,22 @@
 .royal-glimmer {
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    transparent 30%,
-    rgba(255, 255, 255, 0.1) 40%,
-    rgba(255, 215, 0, 0.3) 45%,
-    rgba(255, 255, 255, 0.8) 50%,
-    rgba(255, 215, 0, 0.3) 55%,
-    rgba(255, 255, 255, 0.1) 60%,
-    transparent 70%,
-    transparent 100%
+    #ffffff 0%,
+    #ffffff 30%,
+    #ffd700 40%,
+    #ffffff 45%,
+    #fffacd 50%,
+    #ffffff 55%,
+    #ffd700 60%,
+    #ffffff 70%,
+    #ffffff 100%
   );
   background-size: 200% 100%;
   animation: royalGlimmer 3s ease-in-out infinite;
   background-clip: text;
   -webkit-background-clip: text;
-  position: relative;
-}
-
-.royal-glimmer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    transparent 30%,
-    rgba(255, 255, 255, 0.05) 40%,
-    rgba(255, 215, 0, 0.15) 45%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 215, 0, 0.15) 55%,
-    rgba(255, 255, 255, 0.05) 60%,
-    transparent 70%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: royalGlimmer 3s ease-in-out infinite;
-  pointer-events: none;
-  z-index: 1;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 .animate-elegantText {
   animation: elegantText 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
