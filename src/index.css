@@ -202,4 +202,9 @@ p {
   .card {
     padding: 1.5rem;
   }
+  
+  /* Mobile-specific adjustments for hero section */
+  .animate-elegantText {
+    animation-duration: 1s; /* Slightly faster animation on mobile */
+  }
 }
