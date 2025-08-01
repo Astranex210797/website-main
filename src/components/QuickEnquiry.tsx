@@ -39,16 +39,13 @@ const QuickEnquiry = () => {
         >
           <button
             onClick={handleClick}
-            className="bg-gradient-to-b from-emerald-700 to-emerald-600 text-white px-1.5 py-3 sm:px-2 sm:py-4 flex flex-col items-center justify-center group hover:shadow-lg border border-emerald-800/40 w-8 sm:w-10"
-            style={{ 
-              writingMode: 'vertical-rl', 
-              textOrientation: 'sideways-right',
-              transform: 'rotate(180deg)',
-            }}
+            className="bg-gradient-to-b from-emerald-700 to-emerald-600 text-white px-1.5 py-3 sm:px-2 sm:py-4 flex items-center justify-center group hover:shadow-lg border border-emerald-800/40 w-8 sm:w-10"
             aria-label="Get in touch"
           >
-            <span className="font-semibold text-[10px] sm:text-xs leading-tight tracking-wider">
-              Get In Touch
+            <span className="font-semibold text-[10px] sm:text-xs leading-tight tracking-wider flex flex-col items-center">
+              <span>Get</span>
+              <span>In</span>
+              <span>Touch</span>
             </span>
           </button>
         </motion.div>
@@ -56,4 +53,5 @@ const QuickEnquiry = () => {
     </AnimatePresence>
   );
 };
+
 export default QuickEnquiry;
