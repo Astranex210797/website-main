@@ -50,7 +50,7 @@ const HeroSection = () => {
           ref={videoRef}
           src="/BG.mp4"
           alt="Hero Background"
-          className="w-full h-full object-cover object-bottom"
+          className="w-full h-full object-cover"
           onPlay={handleVideoPlay}
           controls={false}
           autoPlay
@@ -59,21 +59,21 @@ const HeroSection = () => {
           playsInline
           preload="none"
         />
-        {/* Subtle overlay for text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
+        {/* Gradient overlay to handle video cropping and add depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
       </div>
       
-      {/* Text Content - appears after 5.5 seconds and remains visible */}
-      <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-fadeIn' : 'opacity-0'}`}>
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-2xl">
+      {/* Text Content - appears after 5.5 seconds with elegant animation */}
+      <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-elegantText' : 'opacity-0'}`}>
+        <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
           Elevate Your Space with Precision
         </h1>
-        <p className="mt-4 text-lg md:text-xl drop-shadow-lg text-white/90">
+        <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
           Premium Lift Solutions Tailored for Modern Needs
         </p>
         <button
           onClick={() => navigate('/products')}
-          className="mt-6 inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
         >
           Explore Products <ArrowRight size={18} />
         </button>
