@@ -12,6 +12,7 @@ const QuickEnquiry = () => {
     const handleScroll = () => {
       const heroHeight = window.innerHeight * 0.8;
       setIsVisible(window.scrollY > heroHeight);
+      
       const footer = document.querySelector('footer');
       if (footer) {
         const footerRect = footer.getBoundingClientRect();
@@ -19,6 +20,7 @@ const QuickEnquiry = () => {
         setIsFooterVisible(footerRect.top < windowHeight);
       }
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -39,13 +41,15 @@ const QuickEnquiry = () => {
         >
           <button
             onClick={handleClick}
-            className="bg-gradient-to-b from-emerald-700 to-emerald-600 text-white px-1.5 py-3 sm:px-2 sm:py-4 flex items-center justify-center group hover:shadow-lg border border-emerald-800/40 w-8 sm:w-10"
+            className="bg-gradient-to-b from-emerald-700 to-emerald-600 text-white px-1.5 py-3 sm:px-2 sm:py-4 flex flex-col items-center justify-center group hover:shadow-lg border border-emerald-800/40 w-8 sm:w-10"
+            style={{ 
+              writingMode: 'vertical-rl', 
+              textOrientation: 'sideways-right'
+            }}
             aria-label="Get in touch"
           >
-            <span className="font-semibold text-[10px] sm:text-xs leading-tight tracking-wider flex flex-col items-center">
-              <span>Get</span>
-              <span>In</span>
-              <span>Touch</span>
+            <span className="font-semibold text-[10px] sm:text-xs leading-tight tracking-wider">
+              Get In Touch
             </span>
           </button>
         </motion.div>
