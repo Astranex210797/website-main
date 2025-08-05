@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
-// Corrected import path based on your provided file structure
 import BookVisitButton from '../../components/BookVisitButton';
 
 const AMCPage = () => {
@@ -45,13 +44,9 @@ const AMCPage = () => {
 
   return (
     <div className="pt-16">
-      {/* Render the BookVisitButton component here so its state and functions are available */}
-      {/* It will render the floating button and the form modal */}
       <BookVisitButton />
 
-      {/* HERO SECTION */}
       <section className="relative py-24 lg:py-31">
-        {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
             src="/Technician.png"
@@ -60,7 +55,6 @@ const AMCPage = () => {
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
-        {/* Foreground Content */}
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[340px]">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -86,7 +80,6 @@ const AMCPage = () => {
           >
             <button
               onClick={() => {
-                // This will find the hidden BookVisitButton and click it to open the form
                 const bookVisitButtonTrigger = document.querySelector('[aria-label="Book a visit"]');
                 if (bookVisitButtonTrigger instanceof HTMLElement) {
                   bookVisitButtonTrigger.click();
@@ -101,7 +94,6 @@ const AMCPage = () => {
         </div>
       </section>
 
-      {/* BENEFITS SECTION */}
       <section className="py-20 bg-[#F2FCF9]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -136,7 +128,6 @@ const AMCPage = () => {
         </div>
       </section>
 
-      {/* AMC TYPES SECTION */}
       <section className="py-20 bg-[#E6FAF4]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -154,7 +145,6 @@ const AMCPage = () => {
             </p>
           </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Comprehensive AMC */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -194,7 +184,6 @@ const AMCPage = () => {
               </div>
             </motion.div>
 
-            {/* Non-Comprehensive AMC */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -236,8 +225,6 @@ const AMCPage = () => {
           </div>
         </div>
       </section>
-
-      {/* The CTA SECTION has been removed */}
     </div>
   );
 };
