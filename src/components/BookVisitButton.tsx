@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Phone, MapPin, Building, Calendar as Cal, Wrench } from 'lucide-react';
+import { X, User, Phone, MapPin, Building, Wrench } from 'lucide-react';
 
 const BookVisitButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,9 +11,7 @@ const BookVisitButton = () => {
     phone: '',
     address: '',
     liftType: '',
-    installYear: '',
     floors: '',
-    amc: '',
   });
 
   useEffect(() => {
@@ -99,7 +97,7 @@ const BookVisitButton = () => {
                 </button>
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="flex items-center border-b border-emerald-300">
+                <div className="flex items-center">
                   <User className="w-4 h-4 mr-2 text-emerald-500" />
                   <input 
                     type="text" 
@@ -111,7 +109,7 @@ const BookVisitButton = () => {
                     required 
                   />
                 </div>
-                <div className="flex items-center border-b border-emerald-300">
+                <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2 text-emerald-500" />
                   <input 
                     type="tel" 
@@ -123,7 +121,7 @@ const BookVisitButton = () => {
                     required 
                   />
                 </div>
-                <div className="flex items-center border-b border-emerald-300">
+                <div className="flex items-center">
                   <MapPin className="w-4 h-4 mr-2 text-emerald-500" />
                   <input 
                     type="text" 
@@ -135,46 +133,28 @@ const BookVisitButton = () => {
                     required 
                   />
                 </div>
-                <div className="flex items-center border-b border-emerald-300">
+                <div className="flex items-center">
                   <Building className="w-4 h-4 mr-2 text-emerald-500" />
-                  <input 
-                    type="text" 
+                  <select 
                     name="liftType" 
-                    placeholder="Lift Type" 
                     value={formData.liftType} 
                     onChange={handleChange} 
-                    className="w-full py-1 outline-none text-sm" 
-                  />
+                    className="w-full py-1 outline-none text-sm"
+                  >
+                    <option value="">Select Lift Type</option>
+                    <option value="MRL Elevator">MRL Elevator</option>
+                    <option value="Machine room Elevator">Machine room Elevator</option>
+                    <option value="Hydraulic residential lift">Hydraulic residential lift</option>
+                    <option value="Hydraulic goods lift">Hydraulic goods lift</option>
+                  </select>
                 </div>
-                <div className="flex items-center border-b border-emerald-300">
-                  <Cal className="w-4 h-4 mr-2 text-emerald-500" />
-                  <input 
-                    type="text" 
-                    name="installYear" 
-                    placeholder="Installation Year" 
-                    value={formData.installYear} 
-                    onChange={handleChange} 
-                    className="w-full py-1 outline-none text-sm" 
-                  />
-                </div>
-                <div className="flex items-center border-b border-emerald-300">
+                <div className="flex items-center">
                   <Wrench className="w-4 h-4 mr-2 text-emerald-500" />
                   <input 
                     type="text" 
                     name="floors" 
                     placeholder="No. of Floors" 
                     value={formData.floors} 
-                    onChange={handleChange} 
-                    className="w-full py-1 outline-none text-sm" 
-                  />
-                </div>
-                <div className="flex items-center border-b border-emerald-300">
-                  <Wrench className="w-4 h-4 mr-2 text-emerald-500" />
-                  <input 
-                    type="text" 
-                    name="amc" 
-                    placeholder="AMC Details" 
-                    value={formData.amc} 
                     onChange={handleChange} 
                     className="w-full py-1 outline-none text-sm" 
                   />
