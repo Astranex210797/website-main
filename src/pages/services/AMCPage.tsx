@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
+import BookVisitButton from './BookVisitButton'; // Assuming BookVisitButton.tsx is in the same directory
 
 const AMCPage = () => {
   const comprehensiveFeatures = [
@@ -44,6 +44,9 @@ const AMCPage = () => {
 
   return (
     <div className="pt-16">
+      {/* Render the BookVisitButton component here so its state and functions are available */}
+      <BookVisitButton />
+
       {/* HERO SECTION */}
       <section className="relative py-24 lg:py-31">
         {/* Background Image */}
@@ -79,14 +82,19 @@ const AMCPage = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
-            <Link to="/BookVisitButton">
-              <button 
-                className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
-              >
-                <span className="relative z-10">Book Site Visit</span>
-                <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </Link>
+            <button
+              onClick={() => {
+                // This will find the hidden BookVisitButton and click it to open the form
+                const bookVisitButtonTrigger = document.querySelector('[aria-label="Book a visit"]');
+                if (bookVisitButtonTrigger instanceof HTMLElement) {
+                  bookVisitButtonTrigger.click();
+                }
+              }}
+              className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
+            >
+              <span className="relative z-10">Book Site Visit</span>
+              <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
           </motion.div>
         </div>
       </section>
@@ -170,13 +178,17 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#1ABC9C] mb-2">Best Value</div>
                 <p className="text-[#0D3B2E] mb-6">Includes all parts and labor</p>
-                <Link to="/BookVisitButton">
-                  <button 
-                    className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-                  >
-                    Get Quote
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    const bookVisitButtonTrigger = document.querySelector('[aria-label="Book a visit"]');
+                    if (bookVisitButtonTrigger instanceof HTMLElement) {
+                      bookVisitButtonTrigger.click();
+                    }
+                  }}
+                  className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                >
+                  Get Quote
+                </button>
               </div>
             </motion.div>
 
@@ -206,40 +218,24 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#145943] mb-2">Budget Friendly</div>
                 <p className="text-[#0D3B2E] mb-6">Parts charged separately</p>
-                <Link to="/BookVisitButton">
-                  <button 
-                    className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-                  >
-                    Get Quote
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    const bookVisitButtonTrigger = document.querySelector('[aria-label="Book a visit"]');
+                    if (bookVisitButtonTrigger instanceof HTMLElement) {
+                      bookVisitButtonTrigger.click();
+                    }
+                  }}
+                  className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                >
+                  Get Quote
+                </button>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* CTA SECTION */}
-      <section className="py-20 bg-gradient-to-r from-[#1ABC9C] to-[#145943] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center"
-          >
-            <Link to="/BookVisitButton">
-              <button 
-                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
-              >
-                Book Site Visit
-                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-              </button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+      {/* The CTA SECTION has been removed */}
     </div>
   );
 };
