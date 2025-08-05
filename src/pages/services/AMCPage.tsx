@@ -45,7 +45,7 @@ const AMCPage = () => {
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative py-28 lg:py-36">
+      <section className="relative py-24 lg:py-31">
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -56,7 +56,7 @@ const AMCPage = () => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[340px]">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,12 +79,18 @@ const AMCPage = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
-            <Link to="/contact">
-              <button className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]">
-                <span className="relative z-10">Book Site Visit</span>
-                <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-              </button>
-            </Link>
+            <button 
+              onClick={() => {
+                const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
+                if (bookVisitButton) {
+                  bookVisitButton.click();
+                }
+              }}
+              className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
+            >
+              <span className="relative z-10">Book Site Visit</span>
+              <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
           </motion.div>
         </div>
       </section>
@@ -168,11 +174,17 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#1ABC9C] mb-2">Best Value</div>
                 <p className="text-[#0D3B2E] mb-6">Includes all parts and labor</p>
-                <Link to="/contact">
-                  <button className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                    Get Quote
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => {
+                    const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
+                    if (bookVisitButton) {
+                      bookVisitButton.click();
+                    }
+                  }}
+                  className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                >
+                  Get Quote
+                </button>
               </div>
             </motion.div>
 
@@ -202,11 +214,17 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#145943] mb-2">Budget Friendly</div>
                 <p className="text-[#0D3B2E] mb-6">Parts charged separately</p>
-                <Link to="/contact">
-                  <button className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                    Get Quote
-                  </button>
-                </Link>
+                <button 
+                  onClick={() => {
+                    const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
+                    if (bookVisitButton) {
+                      bookVisitButton.click();
+                    }
+                  }}
+                  className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                >
+                  Get Quote
+                </button>
               </div>
             </motion.div>
           </div>
@@ -231,12 +249,18 @@ const AMCPage = () => {
               Start your AMC plan today and experience worry-free elevator operation.
             </p>
             <div className="flex justify-center">
-              <Link to="/contact">
-                <button className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]">
-                  Book Site Visit
-                  <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => {
+                  const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
+                  if (bookVisitButton) {
+                    bookVisitButton.click();
+                  }
+                }}
+                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
+              >
+                Book Site Visit
+                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              </button>
             </div>
           </motion.div>
         </div>

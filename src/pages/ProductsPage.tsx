@@ -60,7 +60,7 @@ const ProductsPage = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="py-14 bg-gradient-to-r from-[#145943] via-[#1ABC9C] to-[#E6FAF4] text-white">
+      <section className="py-12 bg-gradient-to-r from-[#145943] via-[#1ABC9C] to-[#E6FAF4] text-white">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -78,7 +78,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="py-14 bg-[#F2FCF9]">
+      <section className="py-12 bg-[#F2FCF9]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="space-y-16">
             {products.map((product, index) => (
@@ -145,7 +145,7 @@ const ProductsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-14 bg-gradient-to-r from-[#1ABC9C] to-[#145943] text-white">
+      <section className="py-12 bg-gradient-to-r from-[#1ABC9C] to-[#145943] text-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

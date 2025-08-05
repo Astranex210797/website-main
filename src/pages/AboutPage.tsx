@@ -38,7 +38,7 @@ const AboutPage = () => {
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative py-28 lg:py-36">
+      <section className="relative py-24 lg:py-31">
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -50,7 +50,7 @@ const AboutPage = () => {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[340px]">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
