@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
-import BookVisitButton from './BookVisitButton'; // Assuming BookVisitButton.tsx is in the same directory
+// Corrected import path based on your provided file structure
+import BookVisitButton from '../../components/BookVisitButton';
 
 const AMCPage = () => {
   const comprehensiveFeatures = [
@@ -45,6 +46,7 @@ const AMCPage = () => {
   return (
     <div className="pt-16">
       {/* Render the BookVisitButton component here so its state and functions are available */}
+      {/* It will render the floating button and the form modal */}
       <BookVisitButton />
 
       {/* HERO SECTION */}
