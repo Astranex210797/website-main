@@ -79,18 +79,14 @@ const AMCPage = () => {
             transition={{ duration: 0.6 }}
             className="flex justify-center"
           >
-            <button 
-              onClick={() => {
-                const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
-                if (bookVisitButton) {
-                  bookVisitButton.click();
-                }
-              }}
-              className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
-            >
-              <span className="relative z-10">Book Site Visit</span>
-              <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+            <Link to="/BookVisitButton">
+              <button 
+                className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
+              >
+                <span className="relative z-10">Book Site Visit</span>
+                <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -174,17 +170,13 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#1ABC9C] mb-2">Best Value</div>
                 <p className="text-[#0D3B2E] mb-6">Includes all parts and labor</p>
-                <button 
-                  onClick={() => {
-                    const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
-                    if (bookVisitButton) {
-                      bookVisitButton.click();
-                    }
-                  }}
-                  className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-                >
-                  Get Quote
-                </button>
+                <Link to="/BookVisitButton">
+                  <button 
+                    className="w-full bg-[#1ABC9C] hover:bg-[#145943] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                  >
+                    Get Quote
+                  </button>
+                </Link>
               </div>
             </motion.div>
 
@@ -214,17 +206,13 @@ const AMCPage = () => {
               <div className="text-center">
                 <div className="text-3xl font-bold text-[#145943] mb-2">Budget Friendly</div>
                 <p className="text-[#0D3B2E] mb-6">Parts charged separately</p>
-                <button 
-                  onClick={() => {
-                    const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
-                    if (bookVisitButton) {
-                      bookVisitButton.click();
-                    }
-                  }}
-                  className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-                >
-                  Get Quote
-                </button>
+                <Link to="/BookVisitButton">
+                  <button 
+                    className="w-full bg-[#145943] hover:bg-[#1ABC9C] text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                  >
+                    Get Quote
+                  </button>
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -241,27 +229,14 @@ const AMCPage = () => {
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <h2 className="text-4xl font-bold mb-6 text-[#E6FAF4]">
-              Professional Maintenance Services
-            </h2>
-            <p className="text-xl text-[#C3E7DF] mb-8 max-w-3xl">
-              Regular maintenance extends elevator life, ensures safety, and prevents costly breakdowns. 
-              Start your AMC plan today and experience worry-free elevator operation.
-            </p>
-            <div className="flex justify-center">
+            <Link to="/BookVisitButton">
               <button 
-                onClick={() => {
-                  const bookVisitButton = document.querySelector('[aria-label="Book a visit"]');
-                  if (bookVisitButton) {
-                    bookVisitButton.click();
-                  }
-                }}
                 className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
               >
                 Book Site Visit
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </button>
-            </div>
+            </Link>
           </motion.div>
         </div>
       </section>
