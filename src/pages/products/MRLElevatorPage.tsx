@@ -37,21 +37,21 @@ const MRLElevatorPage = () => {
     }
   ];
 
-  // Ref for BookVisitButton
-  const bookVisitBtnRef = useRef<BookVisitButtonHandle>(null);
-
-  // Handler for your custom button
-  const handleCustomButtonClick = () => {
-    if (bookVisitBtnRef.current) {
-      bookVisitBtnRef.current.openForm();
-    }
-  };
-
+  // Ref for the BookVisitButton (must match the useImperativeHandle in BookVisitButton)
+   const bookVisitBtnRef = useRef<{ openForm: () => void }>(null);
+ 
+   // Handler for your custom button
+   const handleCustomButtonClick = () => {
+     if (bookVisitBtnRef.current) {
+       bookVisitBtnRef.current.openForm();
+     }
+   };
+ 
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative min-h-[280px] flex items-center justify-center">
-        {/* Reduced height using min-h-[280px] (adjust as needed) */}
+      <section className="relative min-h-[350px] flex items-center justify-center">
+        {/* Reduced height using min-h-[350px] (adjust as needed) */}
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
