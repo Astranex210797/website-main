@@ -208,3 +208,4 @@ const MachineRoomLiftPage = () => {
     </div>
   );
 };
+export default MachineRoomLiftPage;
