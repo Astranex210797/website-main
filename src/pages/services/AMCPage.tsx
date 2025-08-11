@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, Shield, Wrench } from 'lucide-react';
+import BookVisitButton from '../../components/BookVisitButton';
+
+type BookVisitButtonHandle = {
+  openForm: () => void;
+};
 
 const AMCPage = () => {
   const comprehensiveFeatures = [
@@ -42,10 +47,20 @@ const AMCPage = () => {
     }
   ];
 
+  // Ref for BookVisitButton
+  const bookVisitBtnRef = useRef<BookVisitButtonHandle>(null);
+
+  // Handler for your custom button
+  const handleCustomButtonClick = () => {
+    if (bookVisitBtnRef.current) {
+      bookVisitBtnRef.current.openForm();
+    }
+  };
+
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative py-28 lg:py-36">
+      <section className="relative min-h-[400px] flex items-center justify-center">
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -56,7 +71,7 @@ const AMCPage = () => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center w-full">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,18 +95,19 @@ const AMCPage = () => {
             className="flex justify-center"
           >
             <button 
-              onClick={() => {
-                // Find and click the BookVisitButton to open its form
-                const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
-                if (bookVisitBtn) {
-                  bookVisitBtn.click();
-                }
-              }}
+              onClick={handleCustomButtonClick}
               className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
+              aria-label="Book a visit"
+              type="button"
             >
               <span className="relative z-10">Book Site Visit</span>
               <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+            {/* BookVisitButton instance for modal logic, floating button hidden */}
+            <BookVisitButton
+              ref={bookVisitBtnRef}
+              showFloating={false}
+            />
           </motion.div>
         </div>
       </section>
