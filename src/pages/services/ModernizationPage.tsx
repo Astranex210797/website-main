@@ -310,12 +310,19 @@ const ModernizationPage = () => {
               experts will assess your current system and design the perfect upgrade solution.
             </p>
             <div className="flex justify-center">
-              <Link to="/contact">
-                <button className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]">
-                  Book Site Visit
-                  <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => {
+                  // Find and click the BookVisitButton to open its form
+                  const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
+                  if (bookVisitBtn) {
+                    bookVisitBtn.click();
+                  }
+                }}
+                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
+              >
+                Book Site Visit
+                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              </button>
             </div>
           </motion.div>
         </div>

@@ -70,11 +70,10 @@ const HydraulicPassengerLiftPage = () => {
           >
             <button 
               onClick={() => {
-                const bookVisitBtn = document.querySelector('[aria-label="Book a visit"]');
+                // Find and click the BookVisitButton to open its form
+                const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
                 if (bookVisitBtn) {
                   bookVisitBtn.click();
-                } else {
-                  window.dispatchEvent(new CustomEvent('openBookVisitForm'));
                 }
               }}
               className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
@@ -206,16 +205,15 @@ const HydraulicPassengerLiftPage = () => {
             <div className="flex justify-center">
               <button 
                 onClick={() => {
-                  const bookVisitBtn = document.querySelector('[aria-label="Book a visit"]');
+                  // Find and click the BookVisitButton to open its form
+                  const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
                   if (bookVisitBtn) {
                     bookVisitBtn.click();
-                  } else {
-                    window.dispatchEvent(new CustomEvent('openBookVisitForm'));
                   }
                 }}
-                className="relative bg-white text-[#145943] px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:bg-[#E6FAF4]"
+                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-10 py-5 rounded-xl font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
               >
-                <span className="relative z-10">Get Free Consultation</span>
+                Book Site Visit
                 <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
