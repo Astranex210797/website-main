@@ -202,37 +202,6 @@ const MRLElevatorPage = () => {
           </div>
         </div>
       </section>
-      {/* CTA SECTION */}
-      <section className="py-20 bg-gradient-to-r from-[#1ABC9C] to-[#145943] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="flex flex-col items-center"
-          >
-            <h2 className="text-3xl font-bold mb-6 text-[#E6FAF4]">
-              Experience Space-Saving Innovation
-            </h2>
-            <p className="text-lg text-[#C3E7DF] mb-8 max-w-3xl">
-              Discover how MRL technology can maximize your building's potential. 
-              Get expert consultation and see why MRL is the smart choice for modern construction.
-            </p>
-            <div className="flex justify-center">
-              <button 
-                onClick={handleCustomButtonClick}
-                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
-                aria-label="Book a visit"
-                type="button"
-              >
-                Book Site Visit
-                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };
