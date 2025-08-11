@@ -33,18 +33,13 @@ const MachineRoomLiftPage = () => {
     }
   ];
 
-  // Ref for the BookVisitButton
-  const bookVisitBtnRef = useRef<HTMLButtonElement>(null);
+  // Ref for the BookVisitButton (must match the useImperativeHandle in BookVisitButton)
+  const bookVisitBtnRef = useRef<{ openForm: () => void }>(null);
 
   // Handler for your custom button
   const handleCustomButtonClick = () => {
-    // Try to click the BookVisitButton programmatically
     if (bookVisitBtnRef.current) {
-      bookVisitBtnRef.current.click();
-    } else {
-      // fallback: try to find the button by aria-label
-      const btn = document.querySelector('[aria-label="Book Site Visit"]') as HTMLButtonElement | null;
-      if (btn) btn.click();
+      bookVisitBtnRef.current.openForm();
     }
   };
 
@@ -98,9 +93,6 @@ const MachineRoomLiftPage = () => {
             {/* Hidden BookVisitButton for logic */}
             <BookVisitButton
               ref={bookVisitBtnRef}
-              className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
-              label="Book Site Visit"
-              icon={<ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />}
               style={{ display: 'none' }}
             />
           </motion.div>

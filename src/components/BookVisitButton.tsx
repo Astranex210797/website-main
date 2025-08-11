@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Phone, MapPin, Building, Wrench } from 'lucide-react';
 
-const BookVisitButton = () => {
+const BookVisitButton = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isFooterVisible, setIsFooterVisible] = useState(false);
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -13,6 +13,10 @@ const BookVisitButton = () => {
     liftType: '',
     floors: '',
   });
+
+  useImperativeHandle(ref, () => ({
+    openForm: () => setIsFormOpen(true)
+  }));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,5 +176,6 @@ const BookVisitButton = () => {
       </AnimatePresence>
     </>
   );
-};
+});
+
 export default BookVisitButton;
