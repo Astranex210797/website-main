@@ -206,6 +206,18 @@ const HydraulicPassengerLiftPage = () => {
             <div className="flex justify-center">
               <button 
                 onClick={() => {
+                  const bookVisitBtn = document.querySelector('[aria-label="Book a visit"]');
+                  if (bookVisitBtn) {
+                    bookVisitBtn.click();
+                  } else {
+                    window.dispatchEvent(new CustomEvent('openBookVisitForm'));
+                  }
+                }}
+                className="relative bg-white text-[#145943] px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:bg-[#E6FAF4]"
+              >
+                <span className="relative z-10">Get Free Consultation</span>
+                <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
+              </button>
             </div>
           </motion.div>
         </div>
