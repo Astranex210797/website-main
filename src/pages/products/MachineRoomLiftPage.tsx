@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Shield, Zap, Users } from 'lucide-react';
-import BookVisitButton from '../../components/BookVisitButton'; // <-- Import the component
+import BookVisitButton from '../../components/BookVisitButton';
 
 const MachineRoomLiftPage = () => {
   const specifications = [
@@ -205,3 +205,6 @@ const MachineRoomLiftPage = () => {
           </motion.div>
         </div>
       </section>
+    </div>
+  );
+};
