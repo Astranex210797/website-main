@@ -4,6 +4,10 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Zap, Building, Wrench } from 'lucide-react';
 import BookVisitButton from '../../components/BookVisitButton';
 
+type BookVisitButtonHandle = {
+  openForm: () => void;
+};
+
 const MRLElevatorPage = () => {
   const specifications = [
     'Capacity: 320–1600 kg',
@@ -34,7 +38,7 @@ const MRLElevatorPage = () => {
   ];
 
   // Ref for BookVisitButton
-  const bookVisitBtnRef = useRef<{ openForm: () => void }>(null);
+  const bookVisitBtnRef = useRef<BookVisitButtonHandle>(null);
 
   // Handler for your custom button
   const handleCustomButtonClick = () => {
@@ -46,8 +50,8 @@ const MRLElevatorPage = () => {
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative py-[17%] lg:py-[30.6%]">
-        {/* 15% less than previous py-20 lg:py-36 */}
+      <section className="relative min-h-[280px] flex items-center justify-center">
+        {/* Reduced height using min-h-[280px] (adjust as needed) */}
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -58,7 +62,7 @@ const MRLElevatorPage = () => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[340px]">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center w-full">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -240,4 +244,3 @@ const MRLElevatorPage = () => {
 };
 
 export default MRLElevatorPage;
-
