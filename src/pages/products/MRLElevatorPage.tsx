@@ -38,20 +38,19 @@ const MRLElevatorPage = () => {
   ];
 
   // Ref for the BookVisitButton (must match the useImperativeHandle in BookVisitButton)
-   const bookVisitBtnRef = useRef<{ openForm: () => void }>(null);
- 
-   // Handler for your custom button
-   const handleCustomButtonClick = () => {
-     if (bookVisitBtnRef.current) {
-       bookVisitBtnRef.current.openForm();
-     }
-   };
- 
+  const bookVisitBtnRef = useRef<BookVisitButtonHandle>(null);
+
+  // Handler for your custom button
+  const handleCustomButtonClick = () => {
+    if (bookVisitBtnRef.current) {
+      bookVisitBtnRef.current.openForm();
+    }
+  };
+
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative min-h-[350px] flex items-center justify-center">
-        {/* Reduced height using min-h-[350px] (adjust as needed) */}
+      <section className="relative min-h-[450px] flex items-center justify-center">
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -94,10 +93,10 @@ const MRLElevatorPage = () => {
               <span className="relative z-10">Book Site Visit</span>
               <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            {/* Hidden BookVisitButton for logic */}
+            {/* BookVisitButton instance for modal logic, floating button hidden */}
             <BookVisitButton
               ref={bookVisitBtnRef}
-              style={{ display: 'none' }}
+              showFloating={false}
             />
           </motion.div>
         </div>
@@ -230,11 +229,6 @@ const MRLElevatorPage = () => {
                 Book Site Visit
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </button>
-              {/* Hidden BookVisitButton for logic */}
-              <BookVisitButton
-                ref={bookVisitBtnRef}
-                style={{ display: 'none' }}
-              />
             </div>
           </motion.div>
         </div>
