@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Zap, Building, Wrench } from 'lucide-react';
+import BookVisitButton from '../../components/BookVisitButton';
 
 const MRLElevatorPage = () => {
   const specifications = [
@@ -31,10 +32,22 @@ const MRLElevatorPage = () => {
       description: 'Accessible components reduce maintenance time and costs'
     }
   ];
+
+  // Ref for BookVisitButton
+  const bookVisitBtnRef = useRef<{ openForm: () => void }>(null);
+
+  // Handler for your custom button
+  const handleCustomButtonClick = () => {
+    if (bookVisitBtnRef.current) {
+      bookVisitBtnRef.current.openForm();
+    }
+  };
+
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
-      <section className="relative py-20 lg:py-36">
+      <section className="relative py-[17%] lg:py-[30.6%]">
+        {/* 15% less than previous py-20 lg:py-36 */}
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
@@ -45,7 +58,7 @@ const MRLElevatorPage = () => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
         {/* Foreground Content */}
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[400px]">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 flex flex-col items-center justify-center text-center min-h-[340px]">
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,18 +82,19 @@ const MRLElevatorPage = () => {
             className="flex justify-center"
           >
             <button 
-              onClick={() => {
-                // Find and click the BookVisitButton to open its form
-                const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
-                if (bookVisitBtn) {
-                  bookVisitBtn.click();
-                }
-              }}
+              onClick={handleCustomButtonClick}
               className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
+              aria-label="Book a visit"
+              type="button"
             >
               <span className="relative z-10">Book Site Visit</span>
               <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+            {/* Hidden BookVisitButton for logic */}
+            <BookVisitButton
+              ref={bookVisitBtnRef}
+              style={{ display: 'none' }}
+            />
           </motion.div>
         </div>
       </section>
@@ -204,18 +218,19 @@ const MRLElevatorPage = () => {
             </p>
             <div className="flex justify-center">
               <button 
-                onClick={() => {
-                  // Find and click the BookVisitButton to open its form
-                  const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
-                  if (bookVisitBtn) {
-                    bookVisitBtn.click();
-                  }
-                }}
+                onClick={handleCustomButtonClick}
                 className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
+                aria-label="Book a visit"
+                type="button"
               >
                 Book Site Visit
                 <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
               </button>
+              {/* Hidden BookVisitButton for logic */}
+              <BookVisitButton
+                ref={bookVisitBtnRef}
+                style={{ display: 'none' }}
+              />
             </div>
           </motion.div>
         </div>
@@ -223,4 +238,6 @@ const MRLElevatorPage = () => {
     </div>
   );
 };
+
 export default MRLElevatorPage;
+
