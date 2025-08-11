@@ -70,8 +70,11 @@ const MRLElevatorPage = () => {
           >
             <button 
               onClick={() => {
-                const bookVisitBtn = document.querySelector('[aria-label="Book a visit"]');
-                if (bookVisitBtn) bookVisitBtn.click();
+                // Find and click the BookVisitButton to open its form
+                const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
+                if (bookVisitBtn) {
+                  bookVisitBtn.click();
+                }
               }}
               className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
             >
@@ -200,12 +203,19 @@ const MRLElevatorPage = () => {
               Get expert consultation and see why MRL is the smart choice for modern construction.
             </p>
             <div className="flex justify-center">
-              <Link to="/contact">
-                <button className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]">
-                  Book Site Visit
-                  <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
-                </button>
-              </Link>
+              <button 
+                onClick={() => {
+                  // Find and click the BookVisitButton to open its form
+                  const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
+                  if (bookVisitBtn) {
+                    bookVisitBtn.click();
+                  }
+                }}
+                className="bg-[#E6FAF4] text-[#145943] hover:bg-[#1ABC9C] hover:text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg border-2 border-transparent hover:border-white hover:shadow-[0_0_20px_#E6FAF4]"
+              >
+                Book Site Visit
+                <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              </button>
             </div>
           </motion.div>
         </div>

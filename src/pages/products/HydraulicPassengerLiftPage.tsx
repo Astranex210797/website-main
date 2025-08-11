@@ -70,8 +70,11 @@ const HydraulicPassengerLiftPage = () => {
           >
             <button 
               onClick={() => {
-                const bookVisitBtn = document.querySelector('[aria-label="Book a visit"]');
-                if (bookVisitBtn) bookVisitBtn.click();
+                // Find and click the BookVisitButton to open its form
+                const bookVisitBtn = document.querySelector('button[aria-label="Book a visit"]');
+                if (bookVisitBtn) {
+                  bookVisitBtn.click();
+                }
               }}
               className="relative bg-gradient-to-r from-[#145943] to-[#0D3B2E] text-white px-10 py-5 rounded-xl font-semibold text-xl shadow-lg flex items-center justify-center gap-3 transition-all duration-300 hover:border-[#E6FAF4] hover:shadow-[0_0_20px_#E6FAF4]"
             >
