@@ -23,7 +23,8 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="relative px-4 pt-1">
+      {/* Reduced space between hero and form by decreasing pt-1 to pt-[0.2rem] (80% less) */}
+      <section className="relative px-4 pt-[0.2rem]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
