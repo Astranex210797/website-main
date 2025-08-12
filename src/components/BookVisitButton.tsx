@@ -1,6 +1,7 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Phone, MapPin, Building, Wrench } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const BookVisitButton = forwardRef((props, ref) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,6 +14,9 @@ const BookVisitButton = forwardRef((props, ref) => {
     liftType: '',
     floors: '',
   });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
   useImperativeHandle(ref, () => ({
     openForm: () => setIsFormOpen(true)
@@ -39,36 +43,43 @@ const BookVisitButton = forwardRef((props, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Create mailto link with form data
-    const subject = encodeURIComponent('Site Visit Request - Peak Elevator Group');
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Phone: ${formData.phone}
-Site Address: ${formData.address}
-Lift Type: ${formData.liftType}
-Number of Floors: ${formData.floors}
+    setSending(true);
+    setError('');
+    setSent(false);
 
-Submitted from: Peak Elevator Group Website
-Date: ${new Date().toLocaleString()}
-    `);
-    
-    const mailtoLink = `mailto:vaibhavsingh2910@gmail.com,admin@peakelevatorgroup.com?subject=${subject}&body=${body}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
-    
-    // Clear form and close modal
-    setIsFormOpen(false);
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        phone: '',
-        address: '',
-        liftType: '',
-        floors: '',
-      });
-    }, 500);
+    // Send email via EmailJS
+    emailjs.send(
+      'service_u4yjnm4', // Service ID
+      'template_jt7osne', // Template ID
+      {
+        name: formData.name,
+        phone: formData.phone,
+        address: formData.address,
+        liftType: formData.liftType,
+        floors: formData.floors,
+        // Add more fields if your template expects them
+      },
+      '2gU5KP7JTwYt-TvvM' // Public key
+    ).then(
+      () => {
+        setSending(false);
+        setSent(true);
+        setIsFormOpen(false);
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            phone: '',
+            address: '',
+            liftType: '',
+            floors: '',
+          });
+        }, 500);
+      },
+      () => {
+        setSending(false);
+        setError('Failed to send request. Please try again.');
+      }
+    );
   };
 
   return (
@@ -194,9 +205,16 @@ Date: ${new Date().toLocaleString()}
                 <button 
                   type="submit" 
                   className="w-full mt-4 bg-emerald-700 hover:bg-emerald-800 text-white py-2.5 rounded-lg transition-all font-medium"
+                  disabled={sending}
                 >
-                  Submit Request
+                  {sending ? 'Sending...' : 'Submit Request'}
                 </button>
+                {sent && (
+                  <p className="text-green-600 mt-2">Your request has been sent successfully!</p>
+                )}
+                {error && (
+                  <p className="text-red-600 mt-2">{error}</p>
+                )}
               </form>
             </motion.div>
           </motion.div>
