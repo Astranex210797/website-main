@@ -54,7 +54,7 @@ const MRLElevatorPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
-            src="/pexels-cottonbro-8453049.jpeg"
+            src="/MRL.jpeg"
             alt="MRL Elevator"
             className="w-full h-full object-cover object-center"
           />

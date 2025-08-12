@@ -16,7 +16,7 @@ const ProductGrid = () => {
       id: 2,
       title: 'MRL Elevator',
       subtitle: 'Space-saving innovation without compromise',
-      image: '/pexels-cottonbro-8453049.jpg',
+      image: '/MRL.jpeg',
       link: '/mrl-elevator'
     },
     {
