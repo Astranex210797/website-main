@@ -6,7 +6,7 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-pearlescent text-bottle-green-solid relative overflow-hidden pt-16">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center py-7 px-4 text-center">
+      <section className="relative flex flex-col items-center justify-center pt-7 pb-1 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -23,8 +23,7 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form Section */}
-      {/* Reduced space between hero and form by decreasing pt-1 to pt-[0.2rem] (80% less) */}
-      <section className="relative px-4 pt-[0.2rem]">
+      <section className="relative px-4 pt-0">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
