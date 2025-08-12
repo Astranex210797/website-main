@@ -60,11 +60,26 @@ const PartnersSection = () => {
   }, []);
 
   const partners = [
-    'Toring Drive',
-    'Fermattor',
-    'Wittur',
-    'Monarch',
-    'Arkel'
+    {
+      name: 'Torin Drive',
+      logo: '/torin drive.jpg'
+    },
+    {
+      name: 'Fermator',
+      logo: '/fermator_group_logo.jpeg'
+    },
+    {
+      name: 'Wittur',
+      logo: '/Wittur-LOGOsquare.jpg.jpeg'
+    },
+    {
+      name: 'Monarch',
+      logo: '/Monarch_Control.webp'
+    },
+    {
+      name: 'Arkel',
+      logo: '/arkel .png'
+    }
   ];
 
   return (
@@ -88,22 +103,34 @@ const PartnersSection = () => {
         {/* Scrolling Partners Marquee */}
         <div className="relative overflow-hidden border-y border-bottle-green-solid/20 py-4 backdrop-blur-md">
           <motion.div
-            animate={{ x: [0, -100 * partners.length] }}
+            animate={{ x: [0, -220 * partners.length] }}
             transition={{
               duration: 40,
               repeat: Infinity,
               ease: "linear"
             }}
             className="flex space-x-12 whitespace-nowrap"
-            style={{ width: `${200 * partners.length}%` }}
+            style={{ width: `${220 * partners.length}%` }}
           >
             {[...partners, ...partners].map((partner, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center min-w-[220px] h-20 px-4 bg-pearlescent-subtle hover:bg-white/50 rounded-lg shadow-sm transition-all duration-300 border border-bottle-green-solid/10"
+                className="flex items-center justify-center min-w-[200px] h-20 px-4 bg-pearlescent-subtle hover:bg-white/50 rounded-lg shadow-sm transition-all duration-300 border border-bottle-green-solid/10"
               >
-                <div className="w-8 h-8 bg-bottle-green rounded-full mr-3"></div>
-                <span className="text-bottle-green-solid font-medium text-sm tracking-wide">{partner}</span>
+                <img
+                  src={partner.logo}
+                  alt={`${partner.name} logo`}
+                  className="max-h-12 max-w-[160px] object-contain"
+                  onError={(e) => {
+                    // Fallback to text if image fails to load
+                    e.currentTarget.style.display = 'none';
+                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'block';
+                  }}
+                />
+                <span className="text-bottle-green-solid font-medium text-sm tracking-wide hidden">
+                  {partner.name}
+                </span>
               </div>
             ))}
           </motion.div>
