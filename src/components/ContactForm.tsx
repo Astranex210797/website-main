@@ -17,26 +17,20 @@ const ContactForm = () => {
 
     // Get form data
     const formData = new FormData(form.current!);
-    const user_name = formData.get('user_name');
-    const phone = formData.get('phone');
-    const user_email = formData.get('user_email');
-    const message = formData.get('message');
-
-    // Construct the full message
-    const full_message = `
-      <b>Name:</b> ${user_name}<br/>
-      <b>Phone:</b> ${phone}<br/>
-      <b>Email:</b> ${user_email}<br/>
-      <b>Message:</b> ${message}
-    `;
+    const user_name = formData.get('user_name') as string;
+    const phone = formData.get('phone') as string;
+    const user_email = formData.get('user_email') as string;
+    const message = formData.get('message') as string;
 
     emailjs
       .send(
         'service_dzzyhym', // Service ID
         'template_6s1ll9s', // Template ID
         {
-          full_message,
+          user_name,
+          phone,
           user_email,
+          message,
         },
         '2gU5KP7JTwYt-TvvM' // Public key
       )
