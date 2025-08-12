@@ -1,43 +1,38 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from 'emailjs-com';
 import { motion } from 'framer-motion';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
+  const form = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    // Create mailto link with form data
-    const subject = encodeURIComponent('Contact Form Submission - Peak Elevator Group');
-    const body = encodeURIComponent(`
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Message: ${formData.message}
+    setSending(true);
+    setError('');
+    setSent(false);
 
-Submitted from: Peak Elevator Group Website
-Date: ${new Date().toLocaleString()}
-    `);
-    
-    const mailtoLink = `mailto:vaibhavsingh2910@gmail.com,admin@peakelevatorgroup.com?subject=${subject}&body=${body}`;
-    
-    // Open default email client
-    window.location.href = mailtoLink;
-    
-    // Clear form after submission
-    setTimeout(() => {
-      setFormData({ name: '', email: '', phone: '', message: '' });
-    }, 1000);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    emailjs
+      .sendForm(
+        'service_dzzyhym', // Service ID
+        'template_6s1ll9s', // Template ID
+        form.current!,
+        '2gU5KP7JTwYt-TvvM' // Replace with your EmailJS public key
+      )
+      .then(
+        () => {
+          setSending(false);
+          setSent(true);
+          if (form.current) form.current.reset();
+        },
+        (err) => {
+          setSending(false);
+          setError('Failed to send message. Please try again.');
+        }
+      );
   };
 
   return (
@@ -52,19 +47,17 @@ Date: ${new Date().toLocaleString()}
             viewport={{ once: true }}
             className="bg-pearlescent-subtle rounded-2xl p-6 sm:p-8 shadow-lg border border-bottle-green-solid/20"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="flex flex-col">
-                  <label htmlFor="name" className="text-sm font-medium text-bottle-green-solid mb-2">
+                  <label htmlFor="user_name" className="text-sm font-medium text-bottle-green-solid mb-2">
                     Full Name *
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
+                    id="user_name"
+                    name="user_name"
                     required
-                    value={formData.name}
-                    onChange={handleChange}
                     className="rounded-lg px-4 py-3 bg-pearlescent border border-bottle-green-solid/30 placeholder-bottle-green-solid/50 text-bottle-green-solid text-sm focus:outline-none focus:ring-2 focus:ring-bottle-green focus:border-transparent transition"
                     placeholder="John Doe"
                   />
@@ -78,8 +71,6 @@ Date: ${new Date().toLocaleString()}
                     id="phone"
                     name="phone"
                     required
-                    value={formData.phone}
-                    onChange={handleChange}
                     className="rounded-lg px-4 py-3 bg-pearlescent border border-bottle-green-solid/30 placeholder-bottle-green-solid/50 text-bottle-green-solid text-sm focus:outline-none focus:ring-2 focus:ring-bottle-green focus:border-transparent transition"
                     placeholder="+91 9999999999"
                   />
@@ -87,16 +78,14 @@ Date: ${new Date().toLocaleString()}
               </div>
 
               <div>
-                <label htmlFor="email" className="text-sm font-medium text-bottle-green-solid mb-2">
+                <label htmlFor="user_email" className="text-sm font-medium text-bottle-green-solid mb-2">
                   Email Address *
                 </label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
+                  id="user_email"
+                  name="user_email"
                   required
-                  value={formData.email}
-                  onChange={handleChange}
                   className="w-full rounded-lg px-4 py-3 bg-pearlescent border border-bottle-green-solid/30 placeholder-bottle-green-solid/50 text-bottle-green-solid text-sm focus:outline-none focus:ring-2 focus:ring-bottle-green focus:border-transparent transition"
                   placeholder="you@example.com"
                 />
@@ -110,8 +99,6 @@ Date: ${new Date().toLocaleString()}
                   id="message"
                   name="message"
                   rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
                   className="w-full rounded-lg px-4 py-3 bg-pearlescent border border-bottle-green-solid/30 placeholder-bottle-green-solid/50 text-bottle-green-solid text-sm focus:outline-none focus:ring-2 focus:ring-bottle-green focus:border-transparent transition resize-none"
                   placeholder="Describe your project requirements..."
                 ></textarea>
@@ -120,10 +107,17 @@ Date: ${new Date().toLocaleString()}
               <button
                 type="submit"
                 className="w-full btn-bottle-green font-medium text-base py-3 rounded-lg transition flex items-center justify-center group shadow-lg"
+                disabled={sending}
               >
-                Send Message
+                {sending ? 'Sending...' : 'Send Message'}
                 <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
+              {sent && (
+                <p className="text-green-600 mt-2">Your message has been sent successfully!</p>
+              )}
+              {error && (
+                <p className="text-red-600 mt-2">{error}</p>
+              )}
             </form>
           </motion.div>
 
