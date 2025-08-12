@@ -15,12 +15,30 @@ const ContactForm = () => {
     setError('');
     setSent(false);
 
+    // Get form data
+    const formData = new FormData(form.current!);
+    const user_name = formData.get('user_name');
+    const phone = formData.get('phone');
+    const user_email = formData.get('user_email');
+    const message = formData.get('message');
+
+    // Construct the full message
+    const full_message = `
+      <b>Name:</b> ${user_name}<br/>
+      <b>Phone:</b> ${phone}<br/>
+      <b>Email:</b> ${user_email}<br/>
+      <b>Message:</b> ${message}
+    `;
+
     emailjs
-      .sendForm(
+      .send(
         'service_dzzyhym', // Service ID
         'template_6s1ll9s', // Template ID
-        form.current!,
-        '2gU5KP7JTwYt-TvvM' // Replace with your EmailJS public key
+        {
+          full_message,
+          user_email,
+        },
+        '2gU5KP7JTwYt-TvvM' // Public key
       )
       .then(
         () => {
@@ -28,7 +46,7 @@ const ContactForm = () => {
           setSent(true);
           if (form.current) form.current.reset();
         },
-        (err) => {
+        () => {
           setSending(false);
           setError('Failed to send message. Please try again.');
         }
