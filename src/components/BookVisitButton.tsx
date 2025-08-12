@@ -39,8 +39,36 @@ const BookVisitButton = forwardRef((props, ref) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent('Site Visit Request - Peak Elevator Group');
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Phone: ${formData.phone}
+Site Address: ${formData.address}
+Lift Type: ${formData.liftType}
+Number of Floors: ${formData.floors}
+
+Submitted from: Peak Elevator Group Website
+Date: ${new Date().toLocaleString()}
+    `);
+    
+    const mailtoLink = `mailto:vaibhavsingh2910@gmail.com,admin@peakelevatorgroup.com?subject=${subject}&body=${body}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Clear form and close modal
     setIsFormOpen(false);
+    setTimeout(() => {
+      setFormData({
+        name: '',
+        phone: '',
+        address: '',
+        liftType: '',
+        floors: '',
+      });
+    }, 500);
   };
 
   return (

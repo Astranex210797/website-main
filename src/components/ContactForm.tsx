@@ -12,8 +12,28 @@ const ContactForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent('Contact Form Submission - Peak Elevator Group');
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Message: ${formData.message}
+
+Submitted from: Peak Elevator Group Website
+Date: ${new Date().toLocaleString()}
+    `);
+    
+    const mailtoLink = `mailto:vaibhavsingh2910@gmail.com,admin@peakelevatorgroup.com?subject=${subject}&body=${body}`;
+    
+    // Open default email client
+    window.location.href = mailtoLink;
+    
+    // Clear form after submission
+    setTimeout(() => {
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
