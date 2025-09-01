@@ -42,11 +42,11 @@ const AboutPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 h-full w-full">
           <img
-            src="/BG.jpg"
+            src="/BG.png"
             alt="About Peak Elevator Group"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/40" />
         </div>
 
         {/* Foreground Content */}

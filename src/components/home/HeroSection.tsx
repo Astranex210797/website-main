@@ -4,64 +4,23 @@ import { ArrowRight } from 'lucide-react';
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  const [showText, setShowText] = useState(false);
-  const videoRef = useRef(null);
-  
-  const handleVideoPlay = () => {
-    const timer = setTimeout(() => {
-      setShowText(true);
-    }, 5500);
-    
-    return () => clearTimeout(timer);
-  };
-  
-  useEffect(() => {
-    const videoElement = videoRef.current;
-    
-    if (!videoElement) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          videoElement.load();
-          videoElement.play().catch(error => {
-            console.log("Autoplay prevented:", error);
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    observer.observe(videoElement);
-    
-    return () => {
-      observer.unobserve(videoElement);
-    };
-  }, []);
+  const [showText, setShowText] = useState(true);
 
   return (
     <section className="relative h-[90vh] overflow-hidden flex items-center justify-center bg-black">
-      {/* Background Video */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          src="/BG.mp4"
-          alt="Hero Background"
-          className="w-full h-full object-cover object-[center_30%] md:object-[center_80%]"
-          onPlay={handleVideoPlay}
-          controls={false}
-          autoPlay
-          loop={false}
-          muted
-          playsInline
-          preload="none"
+        <img
+          src="/BG.png"
+          alt="Peak Elevator Group Hero Background"
+          className="w-full h-full object-cover object-center"
         />
-        {/* Enhanced gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+        {/* Enhanced gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30"></div>
       </div>
       
       {/* Text Content */}
-      <div className={`relative z-10 text-center text-white px-4 ${showText ? 'animate-elegantText' : 'opacity-0'}`}>
+      <div className="relative z-10 text-center text-white px-4 animate-elegantText">
         <h1 className="text-3xl md:text-6xl font-bold leading-tight mb-4 md:mb-6 subtle-green-silver">
           Elevate Your Space with Precision
         </h1>
